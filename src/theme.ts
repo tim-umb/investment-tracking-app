@@ -416,23 +416,6 @@ const theme = createTheme({
     '0px 9px 44px 8px #0000001f, 0px 23px 36px 3px #00000024, 0px 11px 14px -7px #00000033', // 23
     '0px 9px 46px 8px #0000001f, 0px 24px 38px 3px #00000024, 0px 11px 15px -7px #00000033', // 24
   ],
-  components: {
-    MuiDrawer: {
-      styleOverrides: {
-        paper: {
-          backgroundColor: '#ffffff',
-          borderRight: '1px solid rgba(0, 0, 0, 0.12)',
-        },
-      },
-    },
-    MuiAppBar: {
-      styleOverrides: {
-        root: {
-          boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
-        },
-      },
-    },
-  },
 });
 
 export default theme;

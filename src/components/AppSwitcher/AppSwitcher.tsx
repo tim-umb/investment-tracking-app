@@ -4,10 +4,9 @@ import { GridViewOutlined } from '@mui/icons-material';
 
 export interface AppSwitcherProps {
   className?: string;
-  state?: "Default" | "Active";
 }
 
-export default function AppSwitcher({ className, state = "Default" }: AppSwitcherProps) {
+export default function AppSwitcher({ className }: AppSwitcherProps) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 

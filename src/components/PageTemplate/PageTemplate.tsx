@@ -11,11 +11,9 @@ import {
   Link,
   Paper,
   useMediaQuery,
-  useTheme,
-  Stack
+  useTheme
 } from '@mui/material';
 import {
-  Menu as MenuIcon,
   AccountCircleOutlined,
   MediationOutlined,
   AttachMoneyOutlined,
