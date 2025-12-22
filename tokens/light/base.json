@@ -1644,7 +1644,7 @@
   },
   "background": {
     "default": {
-      "value": "#FFFFFF",
+      "value": "#F5F5F5",
       "type": "color",
       "description": "Reflects the background.default variable from the theme object"
     },

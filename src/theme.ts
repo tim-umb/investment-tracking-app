@@ -5,7 +5,7 @@ const theme = createTheme({
     primary: {
       main: '#003C6E', // umbBlue.600
       dark: '#003264', // umbBlue.900
-      light: '#42A5F5', // umbBlue.300
+      light: '#0072AD', // umbBlue.300
       contrastText: '#ffffff',
     },
     secondary: {
@@ -39,7 +39,7 @@ const theme = createTheme({
       contrastText: '#ffffff',
     },
     background: {
-      default: '#FFFFFF',
+      default: '#F5F5F5',
       paper: '#FFFFFF',
     },
     text: {

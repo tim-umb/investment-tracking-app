@@ -27,33 +27,16 @@ interface PageTemplateProps {
   showHeader?: boolean;
   showSubHeader?: boolean;
   showBreadcrumbs?: boolean;
+  showPageTabs?: boolean;
+  showStickyTitle?: boolean;
   headerContent?: React.ReactNode;
   subHeaderContent?: React.ReactNode;
+  pageTabsContent?: React.ReactNode;
+  stickyTitleContent?: React.ReactNode;
   children?: React.ReactNode;
 }
 
 // --- Components ---
-
-function Slot({ label }: { label: string }) {
-  return (
-    <Box
-      sx={{
-        border: '1px dashed #9747ff',
-        backgroundColor: 'rgba(151, 71, 255, 0.04)',
-        color: '#9747ff',
-        py: 1,
-        px: 5.5,
-        borderRadius: '2px',
-        textAlign: 'center',
-        fontSize: '12px',
-        width: '100%',
-        boxSizing: 'border-box',
-      }}
-    >
-      {label}
-    </Box>
-  );
-}
 
 function HeaderBreadcrumbs() {
   return (
@@ -75,8 +58,12 @@ export default function PageTemplate({
   showHeader = true,
   showSubHeader = true,
   showBreadcrumbs = true,
+  showPageTabs = false,
+  showStickyTitle = false,
   headerContent,
   subHeaderContent,
+  pageTabsContent,
+  stickyTitleContent,
   children
 }: PageTemplateProps) {
   const muiTheme = useTheme();
@@ -88,15 +75,17 @@ export default function PageTemplate({
         
         {/* Main Content Area */}
         <Box component="main" sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
-          <AppBar 
-            position="static" 
-            elevation={0} 
-            sx={{ 
-              zIndex: (theme) => theme.zIndex.drawer + 1,
-              bgcolor: 'primary.main',
-              boxShadow: '0px 0px 30px 0px rgba(0,87,155,0.04)'
-            }}
-          >
+          {/* Sticky Header Group */}
+          <Box sx={{ position: 'sticky', top: 0, zIndex: (theme) => theme.zIndex.appBar }}>
+            <AppBar 
+              position="static" 
+              elevation={0} 
+              sx={{ 
+                zIndex: (theme) => theme.zIndex.drawer + 1,
+                bgcolor: 'primary.main',
+                boxShadow: '0px 0px 30px 0px rgba(0,87,155,0.04)'
+              }}
+            >
             <Toolbar disableGutters sx={{ minHeight: 64 }}>
               {/* App Switcher / Menu Area */}
               <Box sx={{ 
@@ -145,21 +134,35 @@ export default function PageTemplate({
 
           {showBreadcrumbs && <HeaderBreadcrumbs />}
 
-          {showHeader && (
-            <Paper square elevation={0} sx={{ p: 2, borderBottom: 1, borderColor: 'divider' }}>
-               {headerContent || <Slot label="Instance Slot" />}
+          {showPageTabs && pageTabsContent && (
+            <Paper square elevation={0} sx={{ p: 2, bgcolor: 'rgba(255, 255, 255, 0.9)', boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.06), 0px 4px 5px 0px rgba(0,0,0,0.04), 0px 1px 10px 0px rgba(0,0,0,0.03)' }}>
+               {pageTabsContent}
             </Paper>
           )}
 
-          {showSubHeader && (
+          {showStickyTitle && stickyTitleContent && (
+            <Paper square elevation={0} sx={{ p: 2, bgcolor: 'rgba(255, 255, 255, 0.9)', boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.06), 0px 4px 5px 0px rgba(0,0,0,0.04), 0px 1px 10px 0px rgba(0,0,0,0.03)' }}>
+               {stickyTitleContent}
+            </Paper>
+          )}
+          </Box>
+          {/* End Sticky Header Group */}
+
+          {showHeader && headerContent && (
             <Paper square elevation={0} sx={{ p: 2, borderBottom: 1, borderColor: 'divider' }}>
-               {subHeaderContent || <Slot label="Instance Slot" />}
+               {headerContent}
             </Paper>
           )}
 
-          <Box sx={{ p: 3, flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          {showSubHeader && subHeaderContent && (
+            <Paper square elevation={0} sx={{ p: 2, borderBottom: 1, borderColor: 'divider' }}>
+               {subHeaderContent}
+            </Paper>
+          )}
+
+          <Box sx={{ p: 3, flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', bgcolor: 'background.default' }}>
             <Box sx={{ width: '100%', maxWidth: 1536 }}>
-               {children || <Slot label="Instance Slot" />}
+               {children}
             </Box>
           </Box>
         </Box>

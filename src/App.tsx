@@ -1,14 +1,17 @@
-import PageTemplate from './components/PageTemplate/PageTemplate';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import InvestorPortalSettings from './pages/InvestorPortalSettings';
+import MobileLogin from './pages/MobileLogin';
 import './App.css';
 
 function App() {
   return (
-    <PageTemplate>
-      <div style={{ textAlign: 'center', padding: '2rem' }}>
-        <h2>Welcome to Investment Tracking App</h2>
-        <p>This is the main content area.</p>
-      </div>
-    </PageTemplate>
+    <BrowserRouter basename="/investment-tracking-app">
+      <Routes>
+        <Route path="/" element={<Navigate to="/settings" replace />} />
+        <Route path="/settings" element={<InvestorPortalSettings />} />
+        <Route path="/mobile-login" element={<MobileLogin />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

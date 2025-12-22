@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/main.tsx","./src/theme.ts","./src/vite-env.d.ts","./src/components/appswitcher/appswitcher.tsx","./src/components/pagetemplate/pagetemplate.tsx"],"version":"5.9.3"}
+{"root":["./src/app.tsx","./src/main.tsx","./src/theme.ts","./src/vite-env.d.ts","./src/components/appswitcher/appswitcher.tsx","./src/components/pagetemplate/pagetemplate.tsx","./src/pages/investorportalsettings.tsx","./src/pages/mobilelogin.tsx"],"version":"5.9.3"}
